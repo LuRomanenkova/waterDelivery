@@ -15,11 +15,18 @@
                         ItemDisplayBinding="{Binding Name}"
                         SelectedItem="{Binding SelectedDrink}" />
                 <Image 
-                    Source="{Binding SelectedDrink.ImageUrl}" 
+                   Source="{Binding SelectedDrink.ImageUrl}" 
                    HeightRequest="300" WidthRequest="300"
                    HorizontalOptions="CenterAndExpand" 
-                   VerticalOptions="Center"
-                       />
+                   VerticalOptions="Center"/>
+                <Stepper x:Name="stepper"
+                    Maximum="10"
+                    Increment="1"
+                    HorizontalOptions="Center"/>
+                <Label Text="{Binding Source={x:Reference stepper}, Path=Value}" 
+                       FontSize="Large" 
+                       HorizontalOptions="CenterAndExpand"
+                       FontAttributes="Italic"/>
                 <Button HorizontalOptions="Center" VerticalOptions="End" Margin="10"
                     HeightRequest="40" WidthRequest="100" CornerRadius="20"
                     Text="Confirm" BackgroundColor="CadetBlue"/>
