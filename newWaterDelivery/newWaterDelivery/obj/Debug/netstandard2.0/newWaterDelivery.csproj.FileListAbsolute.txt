@@ -1,0 +1,14 @@
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\bin\Debug\netstandard2.0\newWaterDelivery.deps.json
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\bin\Debug\netstandard2.0\newWaterDelivery.dll
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\bin\Debug\netstandard2.0\ref\newWaterDelivery.dll
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\bin\Debug\netstandard2.0\newWaterDelivery.pdb
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\obj\Debug\netstandard2.0\newWaterDelivery.csprojAssemblyReference.cache
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\obj\Debug\netstandard2.0\SelectDrinkPage.xaml.g.cs
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\obj\Debug\netstandard2.0\newWaterDelivery.AssemblyInfoInputs.cache
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\obj\Debug\netstandard2.0\newWaterDelivery.AssemblyInfo.cs
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\obj\Debug\netstandard2.0\newWaterDelivery.dll
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\obj\Debug\netstandard2.0\ref\newWaterDelivery.dll
+C:\Users\LudmilaRomanenkova\source\repos\newWaterDelivery\newWaterDelivery\newWaterDelivery\obj\Debug\netstandard2.0\newWaterDelivery.pdb
