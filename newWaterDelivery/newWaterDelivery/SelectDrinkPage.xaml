@@ -7,29 +7,19 @@
              x:Class="newWaterDelivery.SelectDrinkPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
+            <StackLayout  x:Name="StackLayoutMap">
                 <Picker Title="Select drink"
                         TitleColor="Red" 
                         TextColor="SeaGreen" 
                         ItemsSource="{Binding Drinks}"
                         ItemDisplayBinding="{Binding Name}"
-                        SelectedItem="{Binding SelectedDrink}" />
+                        SelectedItem="{Binding SelectedDrink}"
+                        SelectedIndexChanged="Picker_SelectedIndexChanged"/>
                 <Image 
                    Source="{Binding SelectedDrink.ImageUrl}" 
                    HeightRequest="300" WidthRequest="300"
                    HorizontalOptions="CenterAndExpand" 
                    VerticalOptions="Center"/>
-                <Stepper x:Name="stepper"
-                    Maximum="10"
-                    Increment="1"
-                    HorizontalOptions="Center"/>
-                <Label Text="{Binding Source={x:Reference stepper}, Path=Value}" 
-                       FontSize="Large" 
-                       HorizontalOptions="CenterAndExpand"
-                       FontAttributes="Italic"/>
-                <Button HorizontalOptions="Center" VerticalOptions="End" Margin="10"
-                    HeightRequest="40" WidthRequest="100" CornerRadius="20"
-                    Text="Confirm" BackgroundColor="CadetBlue"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
