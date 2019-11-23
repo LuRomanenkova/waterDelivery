@@ -95,6 +95,7 @@ namespace newWaterDelivery
                         member.ImageUrl = SelectDrinkPage.global_img;
                         is_in = true;
                         Bucket.Add(member);
+                        SelectDrinkPage.count_drinks = 0;
                     }
                     else
                     {
@@ -106,8 +107,20 @@ namespace newWaterDelivery
                             member.Count = Bucket[ind].Count + SelectDrinkPage.count_drinks;
                             member.ImageUrl = Bucket[ind].ImageUrl;
                             Bucket[ind] = member;
+                            is_in = true;
                         }
-                        
+                        else
+                        {
+                            Member member;
+                            member.Count = SelectDrinkPage.count_drinks;
+                            member.Name = SelectDrinkPage.global_name;
+                            member.ImageUrl = SelectDrinkPage.global_img;
+                            is_in = true;
+                            Bucket.Add(member);
+                        }
+
+                        SelectDrinkPage.count_drinks = 0;
+
                     }
 
                     if (is_in)
