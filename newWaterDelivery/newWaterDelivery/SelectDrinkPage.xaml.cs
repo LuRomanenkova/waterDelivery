@@ -10,13 +10,17 @@ using Xamarin.Forms.Xaml;
 namespace newWaterDelivery
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SelectDrinkPage : ContentPage
+    public  partial class SelectDrinkPage : ContentPage
     {
         Label global_label = new Label();
         Stepper global_stepper = new Stepper();
         Button global_button = new Button();
-        public int count_drinks = 0;
-        
+        public static string global_name;
+        public static string global_img;
+        public static int count_drinks = 0;
+        public static bool is_confirmed = false;
+        private List<Drink> drinks_main = new List<Drink>();
+
         public SelectDrinkPage()
         {
             InitializeComponent();
@@ -62,6 +66,8 @@ namespace newWaterDelivery
 
               });
 
+            drinks_main = Drinks;
+
             return Drinks;
         }
 
@@ -75,6 +81,29 @@ namespace newWaterDelivery
                 StackLayoutMap.Children.Remove(global_label);
                 StackLayoutMap.Children.Remove(global_button);
                 count_drinks = 0;
+            }
+
+            Picker picker = sender as Picker;
+            if (picker.SelectedIndex == 0)
+            {
+                
+                global_name = drinks_main[0].Name;
+                global_img = drinks_main[0].ImageUrl;
+            }
+            else if (picker.SelectedIndex == 1) 
+            {
+                global_name = drinks_main[1].Name;
+                global_img = drinks_main[1].ImageUrl;
+            }
+            else if (picker.SelectedIndex == 2)
+            {
+                global_name = drinks_main[2].Name;
+                global_img = drinks_main[2].ImageUrl;
+            }
+            else if (picker.SelectedIndex == 3)
+            {
+                global_name = drinks_main[3].Name;
+                global_img = drinks_main[3].ImageUrl;
             }
 
             Stepper stepper = new Stepper
@@ -131,6 +160,7 @@ namespace newWaterDelivery
         {
             if (count_drinks > 0)
             {
+                is_confirmed = true;
                 Navigation.PopAsync();
             }
         }
