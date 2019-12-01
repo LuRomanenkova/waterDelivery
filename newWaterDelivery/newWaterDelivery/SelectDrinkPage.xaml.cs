@@ -81,6 +81,9 @@ namespace newWaterDelivery
                 StackLayoutMap.Children.Remove(global_label);
                 StackLayoutMap.Children.Remove(global_button);
                 count_drinks = 0;
+                global_name = "";
+                global_img = "";
+                is_confirmed = false;
             }
 
             Picker picker = sender as Picker;

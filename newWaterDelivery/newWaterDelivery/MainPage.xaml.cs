@@ -60,7 +60,9 @@ namespace newWaterDelivery
                 WidthRequest = 40,
                 CornerRadius = 10,
                 Text = "-",
-                BackgroundColor = Color.CadetBlue
+                BackgroundColor = Color.CadetBlue,
+                BorderColor = Color.Black,
+                BorderWidth = 1
             };
 
             Grid grid = new Grid();
@@ -86,30 +88,10 @@ namespace newWaterDelivery
             {
                 if (SelectDrinkPage.is_confirmed)
                 {
-                    bool is_in = false;
-                    if (Bucket.Count() == 0)
+                    if (SelectDrinkPage.count_drinks != 0)
                     {
-                        Member member;
-                        member.Count = SelectDrinkPage.count_drinks;
-                        member.Name = SelectDrinkPage.global_name;
-                        member.ImageUrl = SelectDrinkPage.global_img;
-                        is_in = true;
-                        Bucket.Add(member);
-                        SelectDrinkPage.count_drinks = 0;
-                    }
-                    else
-                    {
-                        var ind = Bucket.FindIndex(x => x.Name == SelectDrinkPage.global_name);
-                        if (ind != -1)
-                        {
-                            Member member;
-                            member.Name = Bucket[ind].Name;
-                            member.Count = Bucket[ind].Count + SelectDrinkPage.count_drinks;
-                            member.ImageUrl = Bucket[ind].ImageUrl;
-                            Bucket[ind] = member;
-                            is_in = true;
-                        }
-                        else
+                        bool is_in = false;
+                        if (Bucket.Count() == 0)
                         {
                             Member member;
                             member.Count = SelectDrinkPage.count_drinks;
@@ -117,24 +99,51 @@ namespace newWaterDelivery
                             member.ImageUrl = SelectDrinkPage.global_img;
                             is_in = true;
                             Bucket.Add(member);
+                            SelectDrinkPage.count_drinks = 0;
+                        }
+                        else
+                        {
+                            var ind = Bucket.FindIndex(x => x.Name == SelectDrinkPage.global_name);
+                            if (ind != -1)
+                            {
+                                Member member;
+                                member.Name = Bucket[ind].Name;
+                                member.Count = Bucket[ind].Count + SelectDrinkPage.count_drinks;
+                                member.ImageUrl = Bucket[ind].ImageUrl;
+                                Bucket[ind] = member;
+                                is_in = true;
+                            }
+                            else
+                            {
+                                Member member;
+                                member.Count = SelectDrinkPage.count_drinks;
+                                member.Name = SelectDrinkPage.global_name;
+                                member.ImageUrl = SelectDrinkPage.global_img;
+                                is_in = true;
+                                Bucket.Add(member);
+                            }
+
+                            SelectDrinkPage.count_drinks = 0;
+
                         }
 
-                        SelectDrinkPage.count_drinks = 0;
-
+                        if (is_in)
+                        {
+                            Stack.Children.Clear();
+                            for (int i = 0; i < Bucket.Count(); i++)
+                                Add_new_to_busket(Convert.ToString(Bucket[i].Count), Convert.ToString(Bucket[i].Name), Convert.ToString(Bucket[i].ImageUrl));
+                        }
                     }
-
-                    if (is_in)
-                    {
-                        Stack.Children.Clear();
-                        for (int i = 0; i < Bucket.Count(); i++)
-                            Add_new_to_busket(Convert.ToString(Bucket[i].Count), Convert.ToString(Bucket[i].Name), Convert.ToString(Bucket[i].ImageUrl));
-                    }
-                    
                 }
             };
 
 
             Navigation.PushAsync(page_select_drink);
+
+        }
+
+        private void Confirm_drinks(object sender, EventArgs e)
+        {
 
         }
     }
