@@ -7,22 +7,40 @@
              Title="Basket"
              x:Class="newWaterDelivery.MainPage">
 
-    <Grid>
-        <StackLayout x:Name="Stack"
-            BackgroundColor="Aquamarine">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2,5*"/>
-                    <ColumnDefinition Width="2,5*"/>
-                    <ColumnDefinition Width="2,5*"/>
-                    <ColumnDefinition Width="2,5*"/>
-                </Grid.ColumnDefinitions>
-            </Grid>
+    <StackLayout BackgroundColor="Aquamarine" Padding="5">
+        <StackLayout x:Name="Stack">
         </StackLayout>
-        <Button Text="+" VerticalOptions="End" HorizontalOptions="End" CornerRadius="40"
-                WidthRequest="70" HeightRequest="60" Margin="10"
-                BackgroundColor="CadetBlue" BorderColor="Black" BorderWidth="1"
-                Clicked="Add_new_drink"></Button>
-    </Grid>
 
+        <Grid VerticalOptions="EndAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2,5*"/>
+                <ColumnDefinition Width="2,5*"/>
+                <ColumnDefinition Width="2,5*"/>
+                <ColumnDefinition Width="2,5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="+"
+                    CornerRadius="40"
+                    VerticalOptions="End"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    Margin="5"
+                    Grid.Column="3"
+                    BackgroundColor="CadetBlue" BorderColor="Black" BorderWidth="1"
+                    Clicked="Add_new_drink">
+            </Button>
+
+            <Button Text="Order"
+                CornerRadius="10"
+                VerticalOptions="Center"
+                Margin="5"
+                WidthRequest="70"
+                HeightRequest="50"
+                Grid.Column="0"
+                BackgroundColor="CadetBlue" BorderColor="Black" BorderWidth="1"
+                Clicked="Confirm_drinks">
+            </Button>   
+        </Grid>
+       
+    </StackLayout>
 </ContentPage>

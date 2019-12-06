@@ -33,51 +33,74 @@ namespace newWaterDelivery
             {
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center,
-                Source = img_path
+                WidthRequest = 40,
+                Source = img_path,
+                HeightRequest = 40
             };
 
             Label name_drink = new Label
             {
-                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.Center,
-                Text = name
+                Text = name,
+                //HeightRequest = 45,
+                //WidthRequest = 230
             };
 
             Label numbers = new Label
             {
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
-                Text = count
+                Text = count,
+                //HeightRequest = 45,
+                //WidthRequest = 45
             };
 
 
             Button delete_drinks = new Button
             {
                 //Margin = 10,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Center,
                 HeightRequest = 40,
                 WidthRequest = 40,
                 CornerRadius = 10,
-                Text = "-",
+                Text = "x",
                 BackgroundColor = Color.CadetBlue,
                 BorderColor = Color.Black,
                 BorderWidth = 1
             };
 
-            Grid grid = new Grid();
-            grid.Children.Add(img, 0, 0);
-            grid.Children.Add(name_drink, 1, 0);
-            grid.Children.Add(numbers, 2, 0);
-            grid.Children.Add(delete_drinks, 3, 0);
+            Frame frame = new Frame()
+            {
+                Padding = 6
+            };
+
+            StackLayout stack = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal
+            };
+
+            stack.Children.Add(img);
+            stack.Children.Add(name_drink);
+            stack.Children.Add(numbers);
+            stack.Children.Add(delete_drinks);
+
+            frame.Content = stack;
+
+            //Grid grid = new Grid();
+            //grid.Children.Add(img, 0, 0);
+            //grid.Children.Add(name_drink, 1, 0);
+            //grid.Children.Add(numbers, 2, 0);
+            //grid.Children.Add(delete_drinks, 3, 0);
 
             delete_drinks.Clicked += (s, w) =>
             {
-                Stack.Children.Remove(grid);
+                Stack.Children.Remove(frame);
                 Bucket.RemoveAll(x => x.Name == name_drink.Text);
             };
 
-            Stack.Children.Add(grid);
+            Stack.Children.Add(frame);
 
         }
 
@@ -142,9 +165,29 @@ namespace newWaterDelivery
 
         }
 
-        private void Confirm_drinks(object sender, EventArgs e)
+        private async void Confirm_drinks(object sender, EventArgs e)
         {
+            if (Bucket.Count() == 0)
+            {
+                await DisplayAlert("0_0 Opps 0_0", "Your basket is empty :( \r\n You should select smth", "Ok");
+            }
+            else
+            {
+                string purchase = "Your order:\r\n ";
+                for (var i = 0; i != Bucket.Count(); i++)
+                {
+                    purchase += $"{Bucket[i].Count} {Bucket[i].Name};\r\n";
+                }
 
+                var accept = await DisplayAlert("Do you want to confirm?", $"{purchase}","Yes", "No");
+
+                if (accept)
+                {
+                    await DisplayAlert("Successfully!", "Your order will be delivered soon!", "Cool");
+                    Stack.Children.Clear();
+                    Bucket.Clear();
+                }
+            }
         }
     }
 }
