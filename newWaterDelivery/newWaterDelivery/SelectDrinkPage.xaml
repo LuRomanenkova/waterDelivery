@@ -7,10 +7,11 @@
              x:Class="newWaterDelivery.SelectDrinkPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout  x:Name="StackLayoutMap">
+            <StackLayout  x:Name="StackLayoutMap" BackgroundColor="#F8F7FF">
                 <Picker Title="Select drink"
-                        TitleColor="Red" 
-                        TextColor="SeaGreen" 
+                        TitleColor="#5F53A3" 
+                        TextColor="#5F53A3"
+                        HorizontalOptions="Fill"
                         ItemsSource="{Binding Drinks}"
                         ItemDisplayBinding="{Binding Name}"
                         SelectedItem="{Binding SelectedDrink}"

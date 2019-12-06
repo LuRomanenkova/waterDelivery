@@ -66,19 +66,22 @@ namespace newWaterDelivery
                 WidthRequest = 40,
                 CornerRadius = 10,
                 Text = "x",
-                BackgroundColor = Color.CadetBlue,
+                BackgroundColor = Color.FromHex("#5F53A3"),
+                TextColor = Color.FromHex("#F8F7FF"),
                 BorderColor = Color.Black,
                 BorderWidth = 1
             };
 
             Frame frame = new Frame()
             {
-                Padding = 6
+                Padding = 6,
+                BackgroundColor = Color.FromHex("#C1C1FF")
             };
 
             StackLayout stack = new StackLayout
             {
-                Orientation = StackOrientation.Horizontal
+                Orientation = StackOrientation.Horizontal,
+                BackgroundColor = Color.FromHex("#C1C1FF")
             };
 
             stack.Children.Add(img);
@@ -173,10 +176,10 @@ namespace newWaterDelivery
             }
             else
             {
-                string purchase = "Your order:\r\n ";
+                string purchase = "Your order:\r\n";
                 for (var i = 0; i != Bucket.Count(); i++)
                 {
-                    purchase += $"{Bucket[i].Count} {Bucket[i].Name};\r\n";
+                    purchase += $"{Bucket[i].Count} {Bucket[i].Name}\r\n";
                 }
 
                 var accept = await DisplayAlert("Do you want to confirm?", $"{purchase}","Yes", "No");

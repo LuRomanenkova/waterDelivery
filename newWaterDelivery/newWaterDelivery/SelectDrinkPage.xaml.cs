@@ -146,7 +146,8 @@ namespace newWaterDelivery
                 WidthRequest = 100,
                 CornerRadius = 20,
                 Text = "Confirm",
-                BackgroundColor = Color.CadetBlue
+                BackgroundColor = Color.FromHex("#5F53A3"),
+                TextColor = Color.FromHex("#F8F7FF")
             };
 
             button.Clicked += OnButtonClicked;

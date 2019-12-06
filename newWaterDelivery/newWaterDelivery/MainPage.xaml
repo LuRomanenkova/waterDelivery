@@ -7,7 +7,7 @@
              Title="Basket"
              x:Class="newWaterDelivery.MainPage">
 
-    <StackLayout BackgroundColor="Aquamarine" Padding="5">
+    <StackLayout BackgroundColor="#F8F7FF" Padding="5">
         <StackLayout x:Name="Stack">
         </StackLayout>
 
@@ -26,7 +26,8 @@
                     HeightRequest="50"
                     Margin="5"
                     Grid.Column="3"
-                    BackgroundColor="CadetBlue" BorderColor="Black" BorderWidth="1"
+                    BackgroundColor="#5F53A3" BorderColor="Black"  TextColor="#F8F7FF"
+                    BorderWidth="1"
                     Clicked="Add_new_drink">
             </Button>
 
@@ -37,7 +38,8 @@
                 WidthRequest="70"
                 HeightRequest="50"
                 Grid.Column="0"
-                BackgroundColor="CadetBlue" BorderColor="Black" BorderWidth="1"
+                BackgroundColor="#5F53A3" BorderColor="Black" TextColor="#F8F7FF"
+                BorderWidth="1"
                 Clicked="Confirm_drinks">
             </Button>   
         </Grid>
