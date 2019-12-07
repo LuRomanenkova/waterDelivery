@@ -15,7 +15,13 @@
                         ItemsSource="{Binding Drinks}"
                         ItemDisplayBinding="{Binding Name}"
                         SelectedItem="{Binding SelectedDrink}"
-                        SelectedIndexChanged="Picker_SelectedIndexChanged"/>
+                        SelectedIndexChanged="Picker_SelectedIndexChanged">
+                    <!--<Picker.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular" />
+                        </OnPlatform>
+                    </Picker.FontFamily>-->
+                </Picker>
                 <Image 
                    Source="{Binding SelectedDrink.ImageUrl}" 
                    HeightRequest="300" WidthRequest="300"

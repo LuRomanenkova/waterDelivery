@@ -86,6 +86,8 @@ namespace newWaterDelivery
                 is_confirmed = false;
             }
 
+            is_confirmed = false;
+
             Picker picker = sender as Picker;
             if (picker.SelectedIndex == 0)
             {
@@ -127,7 +129,8 @@ namespace newWaterDelivery
             {
                 Text = "",
                 HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                //FontFamily = Device.RuntimePlatform == Device.Android ? "Lobster-Regular.ttf#Lobster-Regular" : "Assets/Fonts/Lobster-Regular.ttf#Lobster"
             };
 
             label.SetBinding(Label.TextProperty, binding);
@@ -147,7 +150,8 @@ namespace newWaterDelivery
                 CornerRadius = 20,
                 Text = "Confirm",
                 BackgroundColor = Color.FromHex("#5F53A3"),
-                TextColor = Color.FromHex("#F8F7FF")
+                TextColor = Color.FromHex("#F8F7FF"),
+                //FontFamily = Device.RuntimePlatform == Device.Android ? "Lobster-Regular.ttf#Lobster-Regular" : "Assets/Fonts/Lobster-Regular.ttf#Lobster"
             };
 
             button.Clicked += OnButtonClicked;

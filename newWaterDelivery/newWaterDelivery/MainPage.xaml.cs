@@ -27,22 +27,23 @@ namespace newWaterDelivery
 
         List<Member> Bucket = new List<Member>();
 
-        private void Add_new_to_busket(string count, string name, string img_path)
+        private void Add_new_to_busket(string count, string name, string img_path, int index)
         {
             Image img = new Image
             {
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center,
-                WidthRequest = 40,
+                WidthRequest = 30,
                 Source = img_path,
-                HeightRequest = 40
+                HeightRequest = 30
             };
 
             Label name_drink = new Label
             {
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.Center,
-                Text = name,
+                Text = name
+                //FontFamily = Device.RuntimePlatform == Device.Android ? "Lobster-Regular.ttf#Lobster-Regular" : "Assets/Fonts/Lobster-Regular.ttf#Lobster"
                 //HeightRequest = 45,
                 //WidthRequest = 230
             };
@@ -51,15 +52,57 @@ namespace newWaterDelivery
             {
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
-                Text = count,
+                Text = count
+                //FontFamily = Device.RuntimePlatform == Device.Android ? "Lobster-Regular.ttf#Lobster-Regular" : "Assets/Fonts/Lobster-Regular.ttf#Lobster"
                 //HeightRequest = 45,
                 //WidthRequest = 45
             };
 
+            Button plus_drinks = new Button
+            {
+                Padding = 0,
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.End,
+                HeightRequest = 40,
+                WidthRequest = 30,
+                CornerRadius = 5,
+                Text = "+",
+                BackgroundColor = Color.FromHex("#5F53A3"),
+                TextColor = Color.FromHex("#F8F7FF"),
+                BorderColor = Color.Black,
+                BorderWidth = 1
+                //FontFamily = Device.RuntimePlatform == Device.Android ? "Lobster-Regular.ttf#Lobster-Regular" : "Assets/Fonts/Lobster-Regular.ttf#Lobster"
+            };
+
+            plus_drinks.Clicked += (s, w) =>
+            {
+                numbers.Text = Convert.ToString(Convert.ToInt32(numbers.Text) + 1);
+                Member a = Bucket[index];
+                a.Count = Convert.ToInt32(numbers.Text);
+                Bucket[index] = a;
+            };
+
+            Button minus_drinks = new Button
+            {
+                Padding = 0,
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.End,
+                HeightRequest = 40,
+                WidthRequest = 30,
+                CornerRadius = 5,
+                Text = "-",
+                BackgroundColor = Color.FromHex("#5F53A3"),
+                TextColor = Color.FromHex("#F8F7FF"),
+                BorderColor = Color.Black,
+                BorderWidth = 1
+                //FontFamily = Device.RuntimePlatform == Device.Android ? "Lobster-Regular.ttf#Lobster-Regular" : "Assets/Fonts/Lobster-Regular.ttf#Lobster"
+            };
+
+           
 
             Button delete_drinks = new Button
             {
-                //Margin = 10,
+                Padding = 0,
                 HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Center,
                 HeightRequest = 40,
@@ -70,6 +113,7 @@ namespace newWaterDelivery
                 TextColor = Color.FromHex("#F8F7FF"),
                 BorderColor = Color.Black,
                 BorderWidth = 1
+                //FontFamily = Device.RuntimePlatform == Device.Android ? "Lobster-Regular.ttf#Lobster-Regular" : "Assets/Fonts/Lobster-Regular.ttf#Lobster"
             };
 
             Frame frame = new Frame()
@@ -87,15 +131,11 @@ namespace newWaterDelivery
             stack.Children.Add(img);
             stack.Children.Add(name_drink);
             stack.Children.Add(numbers);
+            stack.Children.Add(minus_drinks);
+            stack.Children.Add(plus_drinks);
             stack.Children.Add(delete_drinks);
 
             frame.Content = stack;
-
-            //Grid grid = new Grid();
-            //grid.Children.Add(img, 0, 0);
-            //grid.Children.Add(name_drink, 1, 0);
-            //grid.Children.Add(numbers, 2, 0);
-            //grid.Children.Add(delete_drinks, 3, 0);
 
             delete_drinks.Clicked += (s, w) =>
             {
@@ -103,8 +143,24 @@ namespace newWaterDelivery
                 Bucket.RemoveAll(x => x.Name == name_drink.Text);
             };
 
-            Stack.Children.Add(frame);
+            minus_drinks.Clicked += (s, w) =>
+            {
+                if (Convert.ToInt32(numbers.Text) - 1 > 0)
+                {
+                    numbers.Text = Convert.ToString(Convert.ToInt32(numbers.Text) - 1);
 
+                    Member a = Bucket[index];
+                    a.Count = Convert.ToInt32(numbers.Text);
+                    Bucket[index] = a;
+                }
+                //else
+                //{
+                //    Stack.Children.Remove(frame);
+                //    Bucket.RemoveAll(x => x.Name == name_drink.Text);
+                //}
+            };
+
+            Stack.Children.Add(frame);
         }
 
         private void Add_new_drink(object sender, EventArgs e)
@@ -157,7 +213,7 @@ namespace newWaterDelivery
                         {
                             Stack.Children.Clear();
                             for (int i = 0; i < Bucket.Count(); i++)
-                                Add_new_to_busket(Convert.ToString(Bucket[i].Count), Convert.ToString(Bucket[i].Name), Convert.ToString(Bucket[i].ImageUrl));
+                                Add_new_to_busket(Convert.ToString(Bucket[i].Count), Convert.ToString(Bucket[i].Name), Convert.ToString(Bucket[i].ImageUrl), i);
                         }
                     }
                 }
